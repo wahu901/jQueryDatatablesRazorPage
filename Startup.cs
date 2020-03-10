@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using jQueryDatatablesRazorPage.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -25,6 +26,13 @@ namespace jQueryDatatablesRazorPage
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
+
             var connectionString = Configuration["ConnectionStrings:MSSQLConn"];
             services.AddDbContext<DataBaseContext>(options => options.UseSqlServer(connectionString));
 
