@@ -26,6 +26,10 @@ function getTable() {
             $(document).ready(function () {
                 $('#tblPersonalInfo').DataTable({
                     data: responseJSON,
+                    dom: 'lBfrtip',
+                    buttons: [
+                        'copy', 'csv', 'excel', 'pdf', 'print'
+                    ],
                     columns: [
                         { data: "id", name: "ID", autoWidth: true },
                         { data: "firstName", name: "FirstName", autoWidth: true },
