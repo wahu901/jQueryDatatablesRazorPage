@@ -13,89 +13,38 @@ namespace jQueryDatatablesRazorPage
     public class IndexModel : PageModel
     {
 
-        private readonly IPersonalInfoRepository _personalInfoRepository;
-        public IndexModel(IPersonalInfoRepository personalInfoRepository)
+        private readonly jQueryDatatablesRazorPage.Models.RazorPagesPersonalInfoContext _context;
+        public IndexModel(jQueryDatatablesRazorPage.Models.RazorPagesPersonalInfoContext context)
         {
-            _personalInfoRepository = personalInfoRepository;
-            Console.WriteLine("Injected PersonalInfoRepository");
+            _context = context;
+            Console.WriteLine("Injected context");
         }
+
+        public IList<PersonalInfo> PersonalInfoList { get; set; }
 
         public void OnGet()
         {
-            var personalInfoData = _personalInfoRepository.GetAll();
-           
+            
         }
 
    
-    public JsonResult OnGetDataTabelData()
-    {
-        try
+        public JsonResult OnGetDataTabelData()
         {
-                var result = _personalInfoRepository.GetAll();
-                Console.WriteLine("OnGet data table data : personalInfoData=" + result.Count());
-                return new JsonResult(result);
+            try
+            {
+                var result = from m in _context.PersonalInfo
+                                           select m; ;
+                PersonalInfoList =  result.ToList();
+                //Console.WriteLine("OnGet data table data : personalInfoData=" + PersonalInfoList.Count());
+                return new JsonResult(PersonalInfoList);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
 
         }
-        catch (Exception ex)
-        {
-            throw ex;
-        }
 
     }
-
-
-/*
-    public IActionResult AddEditPersonalInfo(int id)
-    {
-        PersonalInfo personalInfo = new PersonalInfo();
-        if (id > 0) personalInfo = _personalInfoRepository.Find(b => b.ID == id);
-        return PartialView("_PersonalInfoForm", personalInfo);
-    }
-    */
-
-    [HttpPost]
-    public async Task<string> Create(PersonalInfo personalInfo)
-    {
-        if (ModelState.IsValid)
-        {
-            if (personalInfo.ID > 0)
-            {
-                personalInfo.LastModifiedDate = DateTime.Now;
-                personalInfo.LastUpdateUser = "Admin";
-                _personalInfoRepository.Update(personalInfo, personalInfo.ID);
-                return "Personal Info Updated Successfully";
-            }
-            else
-            {
-                personalInfo.CreatedDate = DateTime.Now;
-                personalInfo.CreationUser = "Admin";
-                await _personalInfoRepository.AddAsyn(personalInfo);
-                var result = await _personalInfoRepository.SaveAsync();
-
-                var successMessage = "Personal Info Created Successfully. Name: " + personalInfo.FirstName;
-                TempData["successAlert"] = successMessage;
-                return "Personal Info Created Successfully";
-            }
-        }
-        return "Failed";
-    }
-
-    [HttpPost]
-    public IActionResult Delete(int id)
-    {
-        PersonalInfo personalInfo = _personalInfoRepository.Get(id);
-        _personalInfoRepository.Delete(personalInfo);
-        return RedirectToAction("Index");
-    }
-
-    /*
-            public FileStreamResult ExportAllDatatoCSV()
-            {
-                var personalInfoData = (from tblObj in _personalInfoRepository.GetAll() select tblObj).Take(100);
-                var result = Common.WriteCsvToMemory(personalInfoData);
-                var memoryStream = new MemoryStream(result);
-                return new FileStreamResult(memoryStream, "text/csv") { FileDownloadName = "Personal_Info_Data.csv" };
-            }
-            */
-}
 }
