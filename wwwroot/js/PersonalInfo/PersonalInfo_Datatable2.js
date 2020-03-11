@@ -31,7 +31,15 @@ function getTable() {
                         'copy', 'csv', 'excel', 'pdf', 'print'
                     ],
                     columns: [
-                        { data: "id", name: "ID", autoWidth: true },
+                        {
+                            data: "id", name: "ID", autoWidth: true,
+                            "render": function (data, type, row, meta) {
+                                if (type === 'display') {
+                                    data = '<a href="/PersonalInfo/Details?id=' + data + '">' + data + '</a>';
+                                }
+                                return data;
+                            }
+                        },
                         { data: "firstName", name: "FirstName", autoWidth: true },
                         {
                             data: "dateOfBirth",
@@ -49,14 +57,14 @@ function getTable() {
                         {
                             data: null,
                             render: function (data, type, row) {
-                                return "<a href='#' class='btn btn-info btn-sm' onclick=AddEditPersonalInfo('" + row.ID + "');>Edit</a>";
-                            }
+                                return "<a href='/PersonalInfo/Edit?id="+row.id  +"' class='btn btn-info btn-sm'>Edit</a>";
+                          }
                         },
                         {
                             data: null,
                             render: function (data, type, row) {
-                                return "<a href='#' class='btn btn-danger btn-sm' onclick=DeletePersonalInfo('" + row.ID + "'); >Delete</a>";
-                            }
+                                return "<a href='/PersonalInfo/Delete?id=" + row.id + "' class='btn btn-danger btn-sm'>Delete</a>";
+                          }
                         }
                     ],
                     columnDefs: [{

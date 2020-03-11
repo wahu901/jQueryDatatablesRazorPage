@@ -28,12 +28,12 @@ namespace jQueryDatatablesRazorPage.Repository
             return await _context.Set<T>().ToListAsync();
         }
 
-        public virtual T Get(int id)
+        public virtual T Get(Object id)
         {
             return _context.Set<T>().Find(id);
         }
 
-        public virtual async Task<T> GetAsync(int id)
+        public virtual async Task<T> GetAsync(Object id)
         {
             return await _context.Set<T>().FindAsync(id);
         }

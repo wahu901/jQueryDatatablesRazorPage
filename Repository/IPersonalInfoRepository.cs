@@ -4,6 +4,6 @@ namespace jQueryDatatablesRazorPage.Repository
 {
     public interface IPersonalInfoRepository: IGenericRepository<PersonalInfo>
     {
-        PersonalInfo Get(int blogId);
+        PersonalInfo Get(long blogId);
     }
 }

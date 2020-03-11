@@ -21,11 +21,11 @@ namespace jQueryDatatablesRazorPage.Repository
         Task<T> FindAsync(Expression<Func<T, bool>> match);
         IQueryable<T> FindBy(Expression<Func<T, bool>> predicate);
         Task<ICollection<T>> FindByAsyn(Expression<Func<T, bool>> predicate);
-        T Get(int id);
+        T Get(Object id);
         IQueryable<T> GetAll();
         Task<ICollection<T>> GetAllAsyn();
         IQueryable<T> GetAllIncluding(params Expression<Func<T, object>>[] includeProperties);
-        Task<T> GetAsync(int id);
+        Task<T> GetAsync(Object id);
         void Save();
         Task<int> SaveAsync();
         T Update(T t, object key);

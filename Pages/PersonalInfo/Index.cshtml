@@ -6,7 +6,17 @@
 
 <h1>Index</h1>
 
+@if (TempData["successAlert"] != null)
+{
+    <div class="alert alert-success">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+        <p>@TempData["successAlert"]</p>
+    </div>
+}
 
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
 
 <div class="container">
     <div style="width:100%; margin:0 auto;">
@@ -26,7 +36,6 @@
         </table>
     </div>
 </div>
-
 
 
 

@@ -12,7 +12,7 @@ namespace jQueryDatatablesRazorPage.Repository
         {
         }
 
-        public PersonalInfo Get(int Id)
+        public PersonalInfo Get(long Id)
         {
             var query = GetAll().FirstOrDefault(b => b.ID == Id);
             return query;
