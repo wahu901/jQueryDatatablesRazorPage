@@ -1,7 +1,7 @@
 ﻿getTable();
 /////////
 function getTable() {
-    return fetch('./PersonalInfo?handler=DataTabelData',
+    return fetch('./PersonalInfoPage?handler=DataTabelData',
         {
             method: 'get',
             headers: {
@@ -35,7 +35,7 @@ function getTable() {
                             data: "id", name: "ID", autoWidth: true,
                             "render": function (data, type, row, meta) {
                                 if (type === 'display') {
-                                    data = '<a href="/PersonalInfo/Details?id=' + data + '">' + data + '</a>';
+                                    data = '<a href="/PersonalInfoPage/Details?id=' + data + '">' + data + '</a>';
                                 }
                                 return data;
                             }
@@ -63,13 +63,13 @@ function getTable() {
                         {
                             data: null,
                             render: function (data, type, row) {
-                                return "<a href='/PersonalInfo/Edit?id="+row.id  +"' class='btn btn-info btn-sm'>Edit</a>";
+                                return "<a href='/PersonalInfoPage/Edit?id="+row.id  +"' class='btn btn-info btn-sm'>Edit</a>";
                           }
                         },
                         {
                             data: null,
                             render: function (data, type, row) {
-                                return "<a href='/PersonalInfo/Delete?id=" + row.id + "' class='btn btn-danger btn-sm'>Delete</a>";
+                                return "<a href='/PersonalInfoPage/Delete?id=" + row.id + "' class='btn btn-danger btn-sm'>Delete</a>";
                           }
                         }
                     ],

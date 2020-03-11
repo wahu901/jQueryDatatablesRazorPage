@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using jQueryDatatablesRazorPage.Models;
 using jQueryDatatablesRazorPage.Repository;
 
-namespace jQueryDatatablesRazorPage
+namespace jQueryDatatablesRazorPage.PersonalInfoPage
 {
     public class DeleteModel : PageModel
     {

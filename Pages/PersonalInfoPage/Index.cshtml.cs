@@ -8,7 +8,7 @@ using jQueryDatatablesRazorPage.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace jQueryDatatablesRazorPage
+namespace jQueryDatatablesRazorPage.PersonalInfoPage
 {
     public class IndexModel : PageModel
     {

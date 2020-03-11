@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using jQueryDatatablesRazorPage.Models;
 using jQueryDatatablesRazorPage.Repository;
 
-namespace jQueryDatatablesRazorPage
+namespace jQueryDatatablesRazorPage.PersonalInfoPage
 {
     public class CreateModel : PageModel
     {
@@ -42,7 +42,7 @@ namespace jQueryDatatablesRazorPage
             await _context.SaveChangesAsync();
 
             var successMessage = "Personal Info Created Successfully. Name: " + personalInfo.FirstName;
-                    TempData["successAlert"] = successMessage;
+            TempData["successAlert"] = successMessage;
            
             return RedirectToPage("./Index");
         }

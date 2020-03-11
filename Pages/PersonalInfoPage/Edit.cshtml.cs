@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using jQueryDatatablesRazorPage.Models;
 using jQueryDatatablesRazorPage.Repository;
 
-namespace jQueryDatatablesRazorPage
+namespace jQueryDatatablesRazorPage.PersonalInfoPage
 {
     public class EditModel : PageModel
     {
@@ -64,6 +64,8 @@ namespace jQueryDatatablesRazorPage
             try
             {
                 await _context.SaveChangesAsync();
+                var successMessage = "Personal Info Updated Successfully. Name: " + personalInfo.FirstName;
+                TempData["successAlert"] = successMessage;
             }
             catch (DbUpdateConcurrencyException)
             {
