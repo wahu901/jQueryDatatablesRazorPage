@@ -20,8 +20,10 @@ namespace jQueryDatatablesRazorPage
             _context = context;
         }
 
-        [BindProperty]
+
         public PersonalInfo personalInfo { get; set; }
+        [BindProperty]
+        public PersonalInfoDTO personalInfoDTO { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -36,6 +38,8 @@ namespace jQueryDatatablesRazorPage
             {
                 return NotFound();
             }
+            personalInfoDTO = PersonalInfoMapper.ConvertToDTO(personalInfo);
+           
             return Page();
         }
 
@@ -48,6 +52,13 @@ namespace jQueryDatatablesRazorPage
                 return Page();
             }
 
+            personalInfo = await _context.PersonalInfo.FirstOrDefaultAsync(m => m.ID == personalInfoDTO.ID);
+            personalInfo.FirstName = personalInfoDTO.FirstName;
+            personalInfo.LastName = personalInfoDTO.LastName;
+            personalInfo.DateOfBirth = personalInfoDTO.DateOfBirth;
+            personalInfo.Email = personalInfoDTO.Email;
+            personalInfo.LastModifiedDate = DateTime.Now;
+            personalInfo.LastUpdateUser = "Admin";
             _context.Attach(personalInfo).State = EntityState.Modified;
 
             try

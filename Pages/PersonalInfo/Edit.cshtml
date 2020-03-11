@@ -13,26 +13,26 @@
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="personalInfo.ID" />
+            <input type="hidden" asp-for="personalInfoDTO.ID" />
             <div class="form-group">
-                <label asp-for="personalInfo.FirstName" class="control-label"></label>
-                <input asp-for="personalInfo.FirstName" class="form-control" />
-                <span asp-validation-for="personalInfo.FirstName" class="text-danger"></span>
+                <label asp-for="personalInfoDTO.FirstName" class="control-label"></label>
+                <input asp-for="personalInfoDTO.FirstName" class="form-control" />
+                <span asp-validation-for="personalInfoDTO.FirstName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="personalInfo.LastName" class="control-label"></label>
-                <input asp-for="personalInfo.LastName" class="form-control" />
-                <span asp-validation-for="personalInfo.LastName" class="text-danger"></span>
+                <label asp-for="personalInfoDTO.LastName" class="control-label"></label>
+                <input asp-for="personalInfoDTO.LastName" class="form-control" />
+                <span asp-validation-for="personalInfoDTO.LastName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="personalInfo.DateOfBirth" class="control-label"></label>
-                <input asp-for="personalInfo.DateOfBirth" class="form-control" />
-                <span asp-validation-for="personalInfo.DateOfBirth" class="text-danger"></span>
+                <label asp-for="personalInfoDTO.DateOfBirth" class="control-label"></label>
+                <input asp-for="personalInfoDTO.DateOfBirth" class="form-control" />
+                <span asp-validation-for="personalInfoDTO.DateOfBirth" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="personalInfo.Email" class="control-label"></label>
-                <input asp-for="personalInfo.Email" class="form-control" />
-                <span asp-validation-for="personalInfo.Email" class="text-danger"></span>
+                <label asp-for="personalInfoDTO.Email" class="control-label"></label>
+                <input asp-for="personalInfoDTO.Email" class="form-control" />
+                <span asp-validation-for="personalInfoDTO.Email" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

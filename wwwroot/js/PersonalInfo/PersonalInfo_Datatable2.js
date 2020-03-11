@@ -41,19 +41,25 @@ function getTable() {
                             }
                         },
                         { data: "firstName", name: "FirstName", autoWidth: true },
+                        { data: "lastName", name: "LastName", autoWidth: true },
                         {
                             data: "dateOfBirth",
                             name: "DateOfBirth",
                             autoWidth: true,
                             render: function (data) {
-                                var date = new Date(data);
-                                var month = date.getMonth() + 1;
-                                return (month.length > 1 ? month : "0" + month) + "/" + date.getDate() + "/" + date.getFullYear();
+                                if (data != null) {
+                                    var date = new Date(data);
+                                    var month = date.getMonth() + 1;
+                                    return (month.length > 1 ? month : "0" + month) + "/" + date.getDate() + "/" + date.getFullYear();
+                                } else {
+                                    return "";
+                                }
                             }
                         },
-                        { data: "city", name: "City", autoWidth: true },
-                        { data: "country", name: "Country", autoWidth: true },
+                        {   data: "city", name: "City", autoWidth: true },
+                        {   data: "country", name: "Country", autoWidth: true },
                         { data: "mobileNo", name: "MobileNo", autoWidth: true },
+                        { data: "email", name: "Email", autoWidth: true },
                         {
                             data: null,
                             render: function (data, type, row) {
@@ -68,10 +74,10 @@ function getTable() {
                         }
                     ],
                     columnDefs: [{
-                        targets: [6, 7],
+                        targets: [8, 9],
                         orderable: false,
                     }],
-                    lengthMenu: [[10, 15, 25, 50, 100, 200], [10, 15, 25, 50, 100, 200]]
+                    lengthMenu: [[10, 15, 15, 25, 25, 50, 100, 200], [10, 15, 15, 25, 25, 50, 100, 200]]
                 });
             });
         })
