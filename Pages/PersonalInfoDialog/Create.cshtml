@@ -1,0 +1,68 @@
+﻿@page
+@model jQueryDatatablesRazorPage.PersonalInfoDialog.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "_Layout_Dialog";
+}
+
+    <h1>Create PersonalInfo</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <form id="PersonalInfoForm" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="personalInfo.FirstName" class="control-label"></label>
+                <input asp-for="personalInfo.FirstName" class="form-control" />
+                <span asp-validation-for="personalInfo.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="personalInfo.LastName" class="control-label"></label>
+                <input asp-for="personalInfo.LastName" class="form-control" />
+                <span asp-validation-for="personalInfo.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="personalInfo.DateOfBirth" class="control-label"></label>
+                <input asp-for="personalInfo.DateOfBirth" class="form-control" />
+                <span asp-validation-for="personalInfo.DateOfBirth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="personalInfo.City" class="control-label"></label>
+                <input asp-for="personalInfo.City" class="form-control" />
+                <span asp-validation-for="personalInfo.City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="personalInfo.Country" class="control-label"></label>
+                <input asp-for="personalInfo.Country" class="form-control" />
+                <span asp-validation-for="personalInfo.Country" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="personalInfo.MobileNo" class="control-label"></label>
+                <input asp-for="personalInfo.MobileNo" class="form-control" />
+                <span asp-validation-for="personalInfo.City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="personalInfo.NID" class="control-label"></label>
+                <input asp-for="personalInfo.NID" class="form-control" />
+                <span asp-validation-for="personalInfo.NID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="personalInfo.Email" class="control-label"></label>
+                <input asp-for="personalInfo.Email" class="form-control" />
+                <span asp-validation-for="personalInfo.Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="button" id="btnSubmit" value="Create" class="btn btn-info">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
